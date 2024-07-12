@@ -33,6 +33,7 @@ import { updateCredits } from "@/lib/actions/user.actions"
 import { getCldImageUrl } from "next-cloudinary"
 import { addImage, updateImage } from "@/lib/actions/image.actions"
 import { useRouter } from "next/navigation"
+import { InsufficientCreditsModal } from "./InsufficientCreditsModal"
 //import { InsufficientCreditsModal } from "./InsufficientCreditsModal"
  
 export const formSchema = z.object({
@@ -159,7 +160,7 @@ const TransformationForm = ({ action, data = null, userId, type, creditBalance, 
         }
       }))
     }, 1000)();
-      
+
     return onChangeField(value)
   }
 
@@ -186,7 +187,7 @@ const TransformationForm = ({ action, data = null, userId, type, creditBalance, 
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
-        {creditBalance < Math.abs(creditFee)}
+        {creditBalance < Math.abs(creditFee) && <InsufficientCreditsModal /> }
         <CustomField
           control={form.control}
           name="title"
@@ -223,7 +224,7 @@ const TransformationForm = ({ action, data = null, userId, type, creditBalance, 
 
         {(type === 'remove' || type === 'recolor') && (
           <div className="prompt-field">
-            <CustomField 
+            <CustomField
               control={form.control}
               name="prompt"
               formLabel={
@@ -231,7 +232,7 @@ const TransformationForm = ({ action, data = null, userId, type, creditBalance, 
               }
               className="w-full"
               render={({ field }) => (
-                <Input 
+                <Input
                   value={field.value}
                   className="input-field"
                   onChange={(e) => onInputChangeHandler(

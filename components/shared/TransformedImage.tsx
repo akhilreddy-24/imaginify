@@ -26,11 +26,11 @@ const TransformedImage = ({ image, type, title, transformationConfig, isTransfor
         </h3>
 
         {hasDownload && (
-          <button 
-            className="download-btn" 
+          <button
+            className="download-btn"
             onClick={downloadHandler}
           >
-            <Image 
+            <Image
               src="/assets/icons/download.svg"
               alt="Download"
               width={24}
@@ -43,7 +43,7 @@ const TransformedImage = ({ image, type, title, transformationConfig, isTransfor
 
       {image?.publicId && transformationConfig ? (
         <div className="relative">
-          <CldImage 
+          <CldImage
             width={getImageSize(type, image, "width")}
             height={getImageSize(type, image, "height")}
             src={image?.publicId}
@@ -64,7 +64,7 @@ const TransformedImage = ({ image, type, title, transformationConfig, isTransfor
 
           {isTransforming && (
             <div className="transforming-loader">
-              <Image 
+              <Image
                 src="/assets/icons/spinner.svg"
                 width={50}
                 height={50}
