@@ -14,7 +14,7 @@ pnpm dev
 bun dev
 ```
 
-Open [https://imaginify-now.vercel.app](http://localhost:3000) with your browser to see the result.
+Open [https://imaginify-now.vercel.app](https://imaginify-now.vercel.app) with your browser to see the result.
 
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
